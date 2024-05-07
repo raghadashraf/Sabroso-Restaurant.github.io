@@ -1,0 +1,53 @@
+body {
+    background-color: rgb(41, 37, 36);
+    background-image: url(Images/mexicanhat.png) ;
+    background-repeat: repeat-x;
+    background-size: 10%;
+}
+
+.appetitle{
+    
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 10vb;
+    color: rgb(242, 238, 203);
+    font-weight: normal;
+    text-align: center;
+    padding-top: 3.5vb;
+}
+.appename{
+    background-color: rgb(43, 38, 38);
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(242, 238, 203);
+    font-weight: normal;
+font-size: 2.5vb;
+margin-left: 1vb;
+}
+.appeimages{
+    width: 40vb;
+    border:0.5vb solid rgb(242, 238, 203); 
+    margin: 6vb;
+    display: block;
+    margin:  auto;
+
+}
+
+
+.appeprices{
+    text-align: center;
+    font-size: 2vb;
+    font-weight: bold;
+    font-style: italic;
+    color: rgb(242, 238, 203);
+    text-align: center;
+    padding-bottom: 5vb;
+
+}
+
+.spicy{
+    color: red;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding-left: 2vb;
+    
+
+}

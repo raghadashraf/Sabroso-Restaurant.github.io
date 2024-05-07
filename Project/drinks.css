@@ -1,0 +1,76 @@
+body {
+    background-color: rgb(41, 37, 36);
+    background-image: url(Images/mexicanhat.png) ;
+    background-repeat: repeat-x ;
+    background-size: 10%;
+
+}
+ .drinksmenu{
+    background-color: rgb(43, 38, 38);
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(242, 238, 203);
+ }
+ .drinksimages{
+    width: 40vb;
+    border:0.5vb solid rgb(242, 238, 203); 
+    margin: 6vb;
+    display: block;
+    margin: 0 auto; 
+ }
+ h2{
+font-weight: normal;
+font-size: 2.5vb;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+ }
+ .drinkstitle{
+
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 10vb;
+    color: rgb(242, 238, 203);
+    font-weight: normal;
+    text-align: center;
+    padding-top: 3.5vb;
+ }
+
+
+ .drink {
+    position: relative;
+    display: block;
+    margin-bottom: 20px; 
+}
+
+
+
+.drinkdescription {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 1vb;
+    border-radius: 5px;
+    top: calc(100% + -150px); 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    width: 40vb; 
+}
+
+.drink:hover .drinkdescription {
+    display: block;
+}
+
+.prices{
+    text-align: center;
+    font-size: 2vb;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.waterdrinkstitle{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3vb;
+    color: rgb(242, 238, 203);
+    font-weight: normal;
+    text-align: center;
+}

@@ -1,0 +1,47 @@
+a {
+    text-decoration: none;
+    color: rgb(242, 238, 203);
+    font-size: 6vb; 
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: block; 
+    text-align: center; 
+    margin: 2% auto; 
+}
+a:hover {
+color: brown;
+}
+.choices {
+    padding: 0;
+    max-width: 300px; 
+    height: auto; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: justify;
+}
+
+body {
+    background-color: rgb(41, 37, 36);
+    background-image: url(Images/mexicanhat.png) ;
+    background-repeat: no-repeat;
+
+}
+
+
+@media screen and (max-width: 768px) {
+    .choices {
+        max-width: 90%; 
+    }
+}
+
+@media screen and (max-width: 480px) {
+    a {
+        font-size: 8vw; 
+    }
+
+    .choices {
+        max-width: 100%; 
+        padding: 5%; 
+    }
+}
