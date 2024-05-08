@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="CSS/myprofile.css">
+    <link rel="stylesheet" href="CSS/home.css">
+    <link rel="stylesheet" href="CSS/reservation.css">
+    
+    
+      <title>welcome to your profile </title>
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #E4C59E;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #E4C59E;
+        }
+
+        /* Add style for profile info */
+        #profile-info {
+            margin-bottom: 20px;
+        }
+
+        #profile-info p {
+            margin: 5px 0;
+        }
+
+        #profile-info strong {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#">
+            <img src="Images/logof.png" alt="Logo" class="logo">
+        </a>
+        <nav class="navigation">
+            <a href="home.html">Home</a>
+            <a href="MainMenu.html">Menu</a>
+            <a href="feedback.html">Contact</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>My Profile</h1>
+
+        <!-- Profile Information Section -->
+        <div id="profile-info">
+            <!-- Profile information will be displayed here -->
+        </div>
+
+        <!-- Reservations Table Section -->
+        <h2>Reservations</h2>
+
+        <table id="reservationTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Number of Persons</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Reservation rows will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Function to create a row for each reservation
+        function createReservationRow(name, email, date, time, persons) {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${name}</td>
+                <td>${email}</td>
+                <td>${date}</td>
+                <td>${time}</td>
+                <td>${persons}</td>
+                <td><button class="cancel-btn" onclick="cancelReservation(this)">Cancel</button></td>
+            `;
+            return row;
+        }
+
+        // Function to display reservations
+        function displayReservations() {
+            const reservations = JSON.parse(localStorage.getItem("reservations")) || [];
+            const tableBody = document.querySelector("#reservationTable tbody");
+
+            // Clear existing rows
+            tableBody.innerHTML = "";
+
+            // Add new rows for each reservation
+            reservations.forEach(reservation => {
+                const row = createReservationRow(reservation.name, reservation.email, reservation.date, reservation.time, reservation.person);
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Function to display user profile information
+        function displayProfileInfo() {
+            var userData = JSON.parse(localStorage.getItem("userData"));
+            if (userData) {
+                var profileInfoDiv = document.getElementById("profile-info");
+                profileInfoDiv.innerHTML = `
+                    <p><strong>Username:</strong> ${userData.username}</p>
+                    <p><strong>Email:</strong> ${userData.email}</p>
+                    <p><strong>Phone:</strong> ${userData.phone}</p>
+                `;
+            } else {
+                // Handle case when there is no user data in localStorage
+                var profileInfoDiv = document.getElementById("profile-info");
+                profileInfoDiv.innerHTML = "<p>No profile information available.</p>";
+            }
+        }
+        function cancelReservation(btn) {
+            // Get the row to be removed
+            var row = btn.closest("tr");
+            // Remove the row from the table
+            row.remove();
+            // TODO: Add code to remove reservation from storage
+        }
+        // Call the functions to display profile information and reservations when the page loads
+        document.addEventListener("DOMContentLoaded", function() {
+            displayProfileInfo();
+            displayReservations();
+        });
+    </script>
+</body>
+</html>
