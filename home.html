@@ -6,16 +6,8 @@
     <link rel="stylesheet" href="CSS/home.css">
     <link rel="stylesheet" href="CSS/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="JS/script.js"></script>
     <title>Sabroso</title>
-    <style>
-        /* Add this CSS for the signup form */
-        #signup-form {
-            display: none;
-        }
-        .error-message {
-            color: red;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -34,9 +26,9 @@
     <div class="container">
         <img class="wallpaper" src="Images/wallpaper2.jpg" alt="wallpaper" style="width:100%;">
         <div class="content">
-            <h4 class="topic"> GET SPICY SHRIMP TACOS WITH HOT MANGO GRAVY!</h4>
+            <h4 class="topic">GET SPICY SHRIMP TACOS WITH HOT MANGO GRAVY!</h4>
             <br>
-            <h1 class="t2">PUNGENT MEXICAN TACOS... </h1>
+            <h1 class="t2">PUNGENT MEXICAN TACOS...</h1>
         </div>
         <a href="reservation.html" class="reservation-btn">BOOK NOW!</a>
     </div>
@@ -46,36 +38,29 @@
             <img class="nacho" src="Images/nacho b.png" alt="nacho" style="width:100%;">
         </div>
         <div class="text">
-            <h1 class="about topic">
-                The celebration of Mexico’s vibrant history and culture.
-            </h1>
+            <h1 class="about topic">The celebration of Mexico’s vibrant history and culture.</h1>
             <br><br>
             <h4 class="continue topic">
                 Centuries of conquest, independence and revolution have left us with a diverse culinary <br> heritage and a generous appetite for festivity.
                 At Hidalgo, you will find authentic, homemade, <br>Central Mexican cuisine in the warm, gracious atmosphere of a Mexican country estate. <br> Our bar features a wide selection of tequilas and margaritas, as well as a unique Menu.
             </h4>
-            <a href="about.html" class="about-btn">Read More</a>
+            <span class="about-btn">Read More</span>
         </div>
     </section>
-
-    <section class="intro">
-        <div>
-            <br><br>
-            <h1>Indulge into the vibrant flavors of Mexico at Sabroso, where every dish is a tantalizing celebration of authentic Mexican cuisine, crafted with passion and care to transport your taste buds to the streets of Mexico City.</h1>
-        </div>
-    </section>
+    
 
     <!-- Login form container -->
     <div id="login-form">
         <!-- Your login form HTML here -->
         <h2>Sign in</h2>
         <form onsubmit="return loginUser()">
-            <input type="text" name="username" placeholder="Username">
-            <input type="password" name="password" id="login-password" placeholder="Password">
-            <span class="error-message" id="password-error"></span>
+            <input type="text" id="username" name="username" placeholder="Username">
+            <div class="error" id="username-error"></div>
+            <input type="password" id="password" name="password" placeholder="Password">
+            <div class="error" id="password-error"></div>
             <input type="submit" value="Login">
             <div class="signup-link">
-                <span>Don't have an account? <a href="#" id="signup-link">Sign up</a></span>
+                <span>Don't have an account? <a href="Sign Up.html" id="signup-link">Sign up</a></span>
             </div>
         </form>
         <!-- Social media icons -->
@@ -84,12 +69,10 @@
             <a href="#" class="fa fa-twitter"></a>
             <a href="#" class="fa fa-instagram"></a>
         </div>
-        
     </div>
 
     <!-- Signup form container -->
     <div id="signup-form" style="display: none;">
-        <!-- Your signup form HTML here -->
         <h2>Sign up</h2>
         <form onsubmit="return validateSignupForm()">
             <input type="text" name="username" placeholder="Username">
@@ -98,7 +81,7 @@
             <span class="error-message" id="password-error"></span>
             <input type="tel" name="phone" placeholder="Phone Number" oninput="validatePhoneNumber(this)">
             <span class="error-message" id="phone-error"></span>
-            <input type="submit" value="Sign Up" onclick="hideSignupForm()">
+            <input type="submit" value="Sign Up">
             <div class="signup-link">
                 <span>Already have an account? <a href="#" id="login-link">Login</a></span>
             </div>
@@ -125,83 +108,5 @@
             </div>
         </div>
     </footer>
-
-    <!-- JavaScript to make the login form appear after 5 seconds -->
-    <script>
-        setTimeout(function () {
-            document.getElementById("login-form").style.display = "block";
-        }, 2000); // 5 seconds in milliseconds
-
-        // Show signup form when "Sign up" link is clicked
-        document.getElementById("signup-link").addEventListener("click", function(event) {
-            event.preventDefault(); // Prevent default behavior of link
-            document.getElementById("signup-form").style.display = "block";
-            document.getElementById("login-form").style.display = "none"; // Hide login form
-        });
-        document.getElementById("login-link").addEventListener("click", function(event) {
-            event.preventDefault(); // Prevent default behavior of link
-            document.getElementById("signup-form").style.display = "none"; // Hide signup form
-            document.getElementById("login-form").style.display = "block"; // Show login form
-        });
-
-        // Function to validate signup form
-        function validateSignupForm() {
-            var password = document.getElementById("signup-password").value;
-            if (password.length < 8) {
-                document.getElementById("password-error").innerText = "Password must be at least 8 characters long.";
-                return false;
-            }
-            var phoneNumber = document.querySelector("#signup-form input[name='phone']").value;
-            if (phoneNumber.length !== 11) {
-                document.getElementById("phone-error").innerText = "Phone number must be 11 characters long.";
-                return false;
-            }
-
-            var userData = {
-                username: document.querySelector("#signup-form input[name='username']").value,
-                email: document.querySelector("#signup-form input[name='email']").value,
-                phone: phoneNumber
-            };
-            localStorage.setItem("userData", JSON.stringify(userData));
-            
-            // Hide both signup and login forms
-            document.getElementById("signup-form").style.display = "none";
-            document.getElementById("login-form").style.display = "none";
-            
-            return false; // Prevent form submission
-        }
-
-        // Function to handle login
-        function loginUser() {
-            // Here you would perform actual login validation, for simplicity, we'll just set a flag to simulate a successful login
-            var isLoggedIn = true;
-
-            if (isLoggedIn) {
-                // Hide the login form after successful login
-                document.getElementById("login-form").style.display = "none";
-                return false; // Prevent form submission
-            } else {
-                // Display error message or perform other actions for failed login
-                alert("Invalid username or password");
-                return false; // Prevent form submission
-            }
-        }
-
-        // Function to validate phone number
-        function validatePhoneNumber(input) {
-            var phoneNumber = input.value;
-            var errorMessage = document.getElementById("phone-error");
-            if (phoneNumber.length !== 11) {
-                errorMessage.innerText = "Phone number must be 11 characters long.";
-            } else {
-                errorMessage.innerText = "";
-            }
-        }
-
-        // Function to hide signup form when "Sign Up" button is clicked
-        function hideSignupForm() {
-            document.getElementById("signup-form").style.display = "none";
-        }
-    </script>
 </body>
 </html>
