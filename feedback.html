@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Form</title>
+  <link rel="stylesheet" href="CSS/Feedback.css">
+  <link rel="stylesheet" href="CSS/home.css">
+
+  <script src="script.js"></script>
+</head>
+<body>
+  <header>
+    <a href="home.html">
+        <img src="Images/logof.png" alt="Logo" class="logo">
+    </a>
+    <nav class="navigation">
+        <a href="home.html">Home</a>
+        <a href="MainMenu.html">Menu</a>
+        <a href="reservation.html">Contact Us</a>
+        <a href="about.html">About</a>
+    </nav>
+</header>
+  <div class="container">
+    <h1>Feedback Form</h1>
+    <form action="#" method="POST" onsubmit="return validateForm()">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="feedback">Feedback:</label>
+      <textarea id="feedback" name="feedback" rows="4" required></textarea>
+
+      <button type="submit">Submit Feedback</button>
+    </form>
+  </div>
+
+</body>
+</html>
